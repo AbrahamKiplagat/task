@@ -8,5 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Tasks extends Model
 {
     use HasFactory;
+    //mass assignable attributes
    protected $fillable = ['name', 'description', 'completed'];
 }

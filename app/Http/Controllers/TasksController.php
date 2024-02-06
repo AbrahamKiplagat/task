@@ -12,7 +12,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-      
+      //select * from tasks;
         $tasks = Tasks::all(); // Retrieve all tasks from the database
         //$tasks = Tasks::where('completed', 0)->get(); 
         //$tasks = Tasks::orderBy('created_at', 'desc')->get(); // Retrieve tasks ordered by creation date in descending order
@@ -86,7 +86,7 @@ class TasksController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
         //
         Tasks::find($id)->delete();

@@ -14,8 +14,10 @@ use App\Http\Controllers\TasksController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('non.welcome');
 });
 
 Route::resource('tasks', TasksController::class);
 //Route::get('/tasks', [TasksController::class, 'index']);
+//Route::post('/tasks', [TasksController::class, 'delete']);
+//Route::post('/tasks', [TasksController::class, 'update']);
