@@ -41,11 +41,12 @@
                     <tr>
                         <td class="px-4 py-2">{{ $task->name }}</td>
                         <td class="px-4 py-2">
-                            @if ($task->complete)
-                                <span class="text-green-500">Complete</span>
-                            @else
-                                <span class="text-red-500">Incomplete</span>
-                            @endif
+                            <!--log the task completed value-->
+                            @php
+                                Log::info($task->completed);
+                            @endphp
+                            <!--Escaped the php values-->
+                            {{ $task->completed ? 'Done' : 'Not Done' }}
                         </td>
                         <td class="px-4 py-2">
                             <button

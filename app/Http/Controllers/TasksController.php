@@ -13,6 +13,12 @@ class TasksController extends Controller
     public function index()
     {
        $tasks = Tasks::all();
+        //filter for complete tasks
+        // $tasks = $tasks->filter(function ($task) {
+        //     return $task->completed;
+        // });
+      
+        
         return view('tasks.index',compact('tasks'));
     }
 
