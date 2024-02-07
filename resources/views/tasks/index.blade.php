@@ -89,54 +89,21 @@
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Show</a>
 
 
-                            <!-- Add a button to trigger the delete confirmation modal -->
-                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                                onclick="showDeleteConfirmation({{ $task->id }})">Delete</button>
-                        </td>
+                            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST"
+                                style="display: inline;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" onclick="showDeleteToast()"
+                                    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                            </form>
 
-                        <!-- Add a modal for delete confirmation -->
-                        <div id="deleteConfirmationModal"
-                            class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center">
-                            <div class="bg-white p-4 rounded">
-                                <p>Are you sure you want to delete this task?</p>
-                                <div class="flex justify-end mt-4">
-                                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                                        onclick="deleteTask({{ $task->id }})">Yes</button>
-                                    <button
-                                        class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-2"
-                                        onclick="hideDeleteConfirmation()">No</button>
-                                </div>
-                            </div>
-                        </div>
-                        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-                        <script>
-                            function showDeleteConfirmation(taskId) {
-                                // Show the delete confirmation modal
-                                document.getElementById('deleteConfirmationModal').classList.remove('hidden');
-                            }
-
-                            function hideDeleteConfirmation() {
-                                // Hide the delete confirmation modal
-                                document.getElementById('deleteConfirmationModal').classList.add('hidden');
-                            }
+                            <script>
+                                function showDeleteToast() {
+                                    toastr.success('Task deleted successfully!');
+                                }
+                            </script>
 
 
-                            function deleteTask(id) {
-                                // Perform the delete operation using Axios
-                                axios.delete(`/tasks/${id}`)
-                                    .then(response => {
-                                        // Handle the success response
-                                        console.log(response.data);
-                                        // Reload the page after successful deletion
-                                        location.reload();
-                                    })
-                                    .catch(error => {
-                                        // Handle the error response
-                                        console.error(error);
-                                    });
-                            }
-                        </script>
 
 
                         </td>

@@ -8,8 +8,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+//Authenticatable is a trait that is used to authenticate users
 class User extends Authenticatable
 {
+    //use HasFactory trait which is a factory for creating model instances
+    //use HasApiTokens trait which is used to issue API tokens to users
+    //use Notifiable trait which is used to send notifications to users
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

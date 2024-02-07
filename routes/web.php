@@ -14,7 +14,7 @@ use App\Http\Controllers\TasksController;
 */
 
 Route::get('/', function () {
-    return view('non.welcome');
+    return view('welcome');
 });
 
 Route::resource('tasks', TasksController::class);

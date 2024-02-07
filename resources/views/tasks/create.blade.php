@@ -20,7 +20,7 @@
                 @csrf
                 <div class="mb-4">
                     <label for="title" class="block text-gray-700">Title</label>
-                    <input type="text" name="title" id="title" class="form-input mt-1 block w-full" required>
+                    <input type="text" name="name" id="title" class="form-input mt-1 block w-full" required>
                 </div>
                 <div class="mb-4">
                     <label for="description" class="block text-gray-700">Description</label>

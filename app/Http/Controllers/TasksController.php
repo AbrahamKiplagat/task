@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Tasks;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class TasksController extends Controller
 {
@@ -69,8 +71,8 @@ class TasksController extends Controller
      */
     public function edit(string $id)
     {
-        //
-        return view('tasks.edit');
+        $task = Tasks::find($id); // Retrieve the task by its ID
+        return view('tasks.edit', compact('task')); // Pass the task to the view
     }
 
     /**
@@ -78,18 +80,19 @@ class TasksController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-        Tasks::find($id)->update($request->all());
-        return redirect()->route('tasks.index')->with('success', 'Task updated successfully');  
+        $task = Tasks::find($id);
+        $task->update($request->all());
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(int $id)
+    public function destroy(string $id)
     {
         //
         Tasks::find($id)->delete();
+        //Session::flash('success', 'Task deleted successfully.');
         return redirect()->route('tasks.index')->with('success', 'Task deleted successfully');
     }
 }
