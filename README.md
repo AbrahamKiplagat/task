@@ -16,7 +16,7 @@ To clone and seed the project, you would typically follow these steps:
 1. Clone the repository:
 
 ```sh
-git clone <https://github.com/Edward-Kabue/Todolist-app.git>
+git clone https://github.com/Edward-Kabue/Todolist-app.git
 ```
 
 2. Install Composer dependencies:
