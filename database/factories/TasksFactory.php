@@ -17,6 +17,8 @@ class TasksFactory extends Factory
     public function definition(): array
     {
         return [
+            //Get user from the faker object gotten from the user factory
+            'user_id' => \App\Models\User::factory(),
             'name' => $this->faker->text(5),
             'description' => $this->faker->sentence(5),
             'completed' => $this->faker->boolean,

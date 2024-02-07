@@ -19,4 +19,10 @@ class Tasks extends Model
    protected $fillable = ['name', 'description', 'completed'];
    //guarded attributes
    protected $guarded = ['id'];
+    //relationships
+    //A task belongs to a user
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
