@@ -49,15 +49,7 @@ php artisan migrate
 php artisan db:seed
 ```
 
-Edward-Kabue: @workspace give me a summary markdown of laravel direcory structure and specify how to clone and seed the project
-
-GitHub Copilot: Determining workspace structure
-
-Deciding which workspace information to collect
-
-Gathering workspace info
-
-Sure, here is a brief summary of the Laravel directory structure:
+Laravel directory structure:
 
 -   [`app/`](command:_github.copilot.openRelativePath?%5B%22app%2F%22%5D "app/"): Contains the core code of your application. It includes models, controllers, providers, and console commands.
 -   [`bootstrap/`](command:_github.copilot.openRelativePath?%5B%22bootstrap%2F%22%5D "bootstrap/"): Contains the scripts that Laravel uses to start and configure the framework.
@@ -174,5 +166,3 @@ php artisan vendor:publish --provider="BladeUIKit\BladeUIKitServiceProvider" --t
 ```
 
 Now, Blade UI Kit is installed and you can use its components in your views.
-
-Remember to replace the `sh` and `php` code blocks with the actual commands in your terminal.
