@@ -1,25 +1,6 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+@extends('layouts.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Tailwind CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-
-    <!-- Poppins Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-    </style>
-</head>
-
-<body class="antialiased bg-gray-100">
-
+@section('content')
     <div class="container mx-auto py-8">
         <h1 class="text-3xl font-bold mb-4">Tasks</h1>
         <div class="flex justify-between mb-4">
@@ -70,10 +51,10 @@
                         <td class="px-4 py-2">{{ $task->name }}</td>
                         <td class="px-4 py-2">
                             <!--log the task completed value-->
-                            @php
+                            {{-- @php
                                 Log::info($task->completed);
                             @endphp
-                            <!--Escaped the php values-->
+                            <!--Escaped the php values--> --}}
                             {{-- @if ($task->completed)
                                 <span class="bg-green-500 text-white font-bold py-1 px-2 rounded">Done</span>
                             @else
@@ -89,8 +70,7 @@
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Show</a>
 
 
-                            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST"
-                                style="display: inline;">
+                            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" onclick="showDeleteToast()"
@@ -116,7 +96,4 @@
             </tbody>
         </table>
     </div>
-
-</body>
-
-</html>
+@endsection('content')

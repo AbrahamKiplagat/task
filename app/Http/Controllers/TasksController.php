@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Tasks;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
+
 
 
 class TasksController extends Controller
@@ -32,8 +33,9 @@ class TasksController extends Controller
      */
     public function create()
     {
-        //all the code in the create method is to return the view for creating a new task
-        return view('tasks.create');
+        //add a new task fetching all the users from the database
+        $users = User::all();
+        return view('tasks.create',compact('users'));
     }
 
     /**
@@ -41,15 +43,26 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        //validate the request
+        // Log the request information
+        //\Illuminate\Support\Facades\Log::info('Request data:', $request->all());
+
+        // Validate the request
         $request->validate([
             'name' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'user_id' => 'required|exists:users,id' // Validate that the user_id exists in the users table
         ]);
-       //create a new task
-        Tasks::create($request->all());
 
-        return redirect()->route('tasks.index')->with('success', 'Task created successfully');
+        // Create a new task with the user_id
+        $task = new Tasks();
+        $task->fill($request->all());
+        $task->save();
+        $notification = array(
+            'message' => 'Successfully Done',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('tasks.index')->with($notification);
     }
 
     /**

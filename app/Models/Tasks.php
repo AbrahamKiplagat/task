@@ -16,7 +16,13 @@ class Tasks extends Model
     vulnerabilities by only allowing fillable model attributes 
     to be mass assigned.*/
     //mass assignable attributes
-   protected $fillable = ['name', 'description', 'completed'];
+   protected $fillable = ['name', 'description', 'completed', 'user_id'];
    //guarded attributes
-   protected $guarded = ['id'];
+   //protected $guarded = ['id'];
+    //relationships
+    //A task belongs to a user
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
