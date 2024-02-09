@@ -1,16 +1,24 @@
-@extends('layouts.app')
 
-@section('content')
+<!--extend the layout from the app.blade.php file
+using the x-app-layout component-->
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-4">
+            {{ __('Tasks') }}
+        </h2>
+        <!-- add link to create task route -->
+
+        <a href="{{ route('tasks.create') }}"
+            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add Task</a>
+
+
+    </x-slot>
+
+
+
+
     <div class="container mx-auto py-8">
-        <h1 class="text-3xl font-bold mb-4">Tasks</h1>
-        <div class="flex justify-between mb-4">
-            <div>
-                <input type="text" class="border border-gray-300 p-2" placeholder="Search tasks">
-            </div>
-            <!-- Add a link to the create route using mustache syntax -->
-            <a href="{{ route('tasks.create') }}"
-                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add Task</a>
-        </div>
+        <!-- display a table of tasks -->
         <table class="table-auto mx-auto">
             <thead>
                 <tr>
@@ -96,4 +104,6 @@
             </tbody>
         </table>
     </div>
-@endsection('content')
+
+</x-app-layout>
+

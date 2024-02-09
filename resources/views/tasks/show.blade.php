@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<x-app-layout>
     <div class="container mx-auto">
         <div class="bg-white shadow-md rounded-lg p-6">
             <h1 class="text-2xl font-bold mb-4">{{ $task->title }}</h1>
@@ -13,4 +11,5 @@
         <a href="{{ route('tasks.edit', $task->id) }}"
             class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">Edit</a>
     </div>
-@endsection
+
+</x-app-layout>

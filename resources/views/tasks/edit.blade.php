@@ -1,6 +1,6 @@
-@extends('layouts.app')
-
-@section('content')
+<!-- resources/views/tasks/edit.blade.php -->
+<!--extend app layout from a slot-->
+<x-app-layout>
     <div class="container">
         <h1 class="text-center">Edit Task</h1>
         <form action="{{ route('tasks.update', $task->id) }}" method="POST" class="mx-auto w-1/2">
@@ -25,4 +25,4 @@
             </div>
             <button type="submit" class="btn btn-primary">Update Task</button>
         </form>
-    @endsection
+        <x-app-layout>
