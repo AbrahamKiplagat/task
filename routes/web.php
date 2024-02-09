@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TasksController;
+
 use App\Http\Controllers\ProfileController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,7 @@ Route::get('/', function () {
 });
 // tasks routes
 Route::resource('tasks', TasksController::class);
+
 
 /**
  * Route for displaying the dashboard.
@@ -60,3 +63,4 @@ Route::middleware('auth')->group(function () {
  * Include the authentication routes file.
  */
 require __DIR__.'/auth.php';
+

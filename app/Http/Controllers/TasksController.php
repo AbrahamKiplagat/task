@@ -44,7 +44,7 @@ class TasksController extends Controller
     public function store(Request $request)
     {
         // Log the request information
-        \Illuminate\Support\Facades\Log::info('Request data:', $request->all());
+        //\Illuminate\Support\Facades\Log::info('Request data:', $request->all());
 
         // Validate the request
         $request->validate([
@@ -57,8 +57,12 @@ class TasksController extends Controller
         $task = new Tasks();
         $task->fill($request->all());
         $task->save();
+        $notification = array(
+            'message' => 'Successfully Done',
+            'alert-type' => 'success'
+        );
 
-        return redirect()->route('tasks.index')->with('success', 'Task created successfully');
+        return redirect()->route('tasks.index')->with($notification);
     }
 
     /**

@@ -1,3 +1,4 @@
+
 <!--extend the layout from the app.blade.php file
 using the x-app-layout component-->
 <x-app-layout>
@@ -12,6 +13,10 @@ using the x-app-layout component-->
 
 
     </x-slot>
+
+
+
+
     <div class="container mx-auto py-8">
         <!-- display a table of tasks -->
         <table class="table-auto mx-auto">
@@ -54,10 +59,10 @@ using the x-app-layout component-->
                         <td class="px-4 py-2">{{ $task->name }}</td>
                         <td class="px-4 py-2">
                             <!--log the task completed value-->
-                            @php
+                            {{-- @php
                                 Log::info($task->completed);
                             @endphp
-                            <!--Escaped the php values-->
+                            <!--Escaped the php values--> --}}
                             {{-- @if ($task->completed)
                                 <span class="bg-green-500 text-white font-bold py-1 px-2 rounded">Done</span>
                             @else
@@ -73,8 +78,7 @@ using the x-app-layout component-->
                                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Show</a>
 
 
-                            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST"
-                                style="display: inline;">
+                            <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" onclick="showDeleteToast()"
@@ -100,4 +104,6 @@ using the x-app-layout component-->
             </tbody>
         </table>
     </div>
+
 </x-app-layout>
+
