@@ -166,3 +166,9 @@ php artisan vendor:publish --provider="BladeUIKit\BladeUIKitServiceProvider" --t
 ```
 
 Now, Blade UI Kit is installed and you can use its components in your views.
+<img width="960" alt="Laravel-exercise2" src="https://github.com/AbrahamKiplagat/task/assets/110113737/82b30c2f-ec0d-4570-bd1b-20b6fb5c35fe">
+<img width="960" alt="Laravel-exercise1" src="https://github.com/AbrahamKiplagat/task/assets/110113737/0578a0e3-605d-4081-ab30-19fd44754979">
+<img width="960" alt="Laravel-exercise" src="https://github.com/AbrahamKiplagat/task/assets/110113737/919d8984-9b93-4b9e-871a-4649ce9acefd">
+
+
+
