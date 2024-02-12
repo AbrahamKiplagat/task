@@ -6,12 +6,13 @@ using the x-app-layout component-->
         <h2 class="font-semibold text-xl text-gray-800 leading-tight mb-4">
             {{ __('Tasks') }}
         </h2>
-        <!-- add link to create task route -->
-
-        <a href="{{ route('tasks.create') }}"
-            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add Task</a>
-
-
+        <form action="{{ route('tasks.index') }}" method="GET" class="mb-4">
+            <div class="flex">
+                <input type="text" name="search" placeholder="Search tasks..." class="form-input px-4 py-2">
+                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">Search</button>
+            </div>
+        </form>
+        <a href="{{ route('tasks.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Add Task</a>
     </x-slot>
 
 
@@ -67,7 +68,7 @@ using the x-app-layout component-->
                                 <span class="bg-green-500 text-white font-bold py-1 px-2 rounded">Done</span>
                             @else
                                 <span class="bg-red-500 text-white font-bold py-1 px-2 rounded">Not Done</span>
-                                
+
                             @endif --}}
                             <!-- Tenary operator to check if the task is completed or not -->
 

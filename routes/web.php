@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TasksController;
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\BlogController;
 
 
 /*
@@ -16,6 +19,13 @@ use App\Http\Controllers\ProfileController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// web.php
+
+Route::get('/destination', [DestinationController::class,'index'])->name('destination');
+Route::get('/blog', [BlogController::class,'index'])->name('blog');
+Route::get('/about-us', [AboutUsController::class, 'index'])->name('about-us');
+// Route::get('/login', 'LoginController@index')->name('login');
+
 
 Route::get('/', function () {
     return view('welcome');

@@ -13,20 +13,31 @@ class TasksController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    // public function index()
+    // {
+    //   //select * from tasks;
+    //     $tasks = Tasks::all(); // Retrieve all tasks from the database
+    //     //$tasks = Tasks::where('completed', 0)->get();
+    //     //$tasks = Tasks::orderBy('created_at', 'desc')->get(); // Retrieve tasks ordered by creation date in descending order
+    //     //$tasks = Tasks::limit(10)->get(); // Retrieve only the first 10 tasks
+    //     //$tasks = Tasks::select('name', 'description')->get(); // Retrieve only specific columns from the tasks table
+    //     //$tasks = Tasks::with('user')->get(); // Retrieve tasks with their associated user (assuming there is a relationship defined)
+    //     // Retrieve only the tasks that are not completed and order them by creation date in descending order
+    //     //$tasks = Tasks::where('completed', 0)->orderBy('created_at', 'desc')->get();
+
+    //     return view('tasks.index',compact('tasks'));
+    // }
+    public function index(Request $request)
     {
-      //select * from tasks;
-        $tasks = Tasks::all(); // Retrieve all tasks from the database
-        //$tasks = Tasks::where('completed', 0)->get(); 
-        //$tasks = Tasks::orderBy('created_at', 'desc')->get(); // Retrieve tasks ordered by creation date in descending order
-        //$tasks = Tasks::limit(10)->get(); // Retrieve only the first 10 tasks
-        //$tasks = Tasks::select('name', 'description')->get(); // Retrieve only specific columns from the tasks table
-        //$tasks = Tasks::with('user')->get(); // Retrieve tasks with their associated user (assuming there is a relationship defined)
-        // Retrieve only the tasks that are not completed and order them by creation date in descending order
-        //$tasks = Tasks::where('completed', 0)->orderBy('created_at', 'desc')->get(); 
-        
-        return view('tasks.index',compact('tasks'));
+        $search = $request->input('search');
+
+        $tasks = Tasks::when($search, function ($query) use ($search) {
+            return $query->where('name', 'like', "%$search%");
+        })->get();
+
+        return view('tasks.index', compact('tasks', 'search'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -108,4 +119,5 @@ class TasksController extends Controller
         //Session::flash('success', 'Task deleted successfully.');
         return redirect()->route('tasks.index')->with('success', 'Task deleted successfully');
     }
+
 }
